@@ -1,0 +1,300 @@
+🚀 Full-Stack Project Roadmap (WayStay)
+Audience: 2nd-year student building a resume project
+Commitment: 10–15 hrs/week
+Tech Stack: Spring Boot (backend), MySQL (database), React + Tailwind (frontend), JWT
+(auth)
+
+🎯 Project Goal
+Deliver a working, deployed web app that demonstrates:
+•
+•
+•
+•
+•
+•
+
+Secure REST API design
+Database integration
+Authentication & authorization with JWT
+CRUD + relationships (users, hotels, bookings, blogs)
+Frontend with protected routes and state management
+Deployment + documentation
+
+🧩 Core Features
+1. User Authentication (Foundation)
+Backend (Spring Boot):
+•
+•
+
+User entity: id, name, email, password (hashed with Bcrypt).
+
+Endpoints:
+o
+o
+o
+
+•
+
+POST /api/auth/register → register user.
+POST /api/auth/login → return JWT.
+GET /api/users/me → return logged-in user’s profile.
+
+Spring Security + JWT filter for request authentication.
+
+Frontend (React):
+•
+•
+•
+•
+
+Pages: /register, /login.
+Store JWT in localStorage.
+React Context for global auth state.
+Protected routes (redirect unauthenticated users).
+
+•
+
+Profile page: display data from /api/users/me.
+
+2. Hotels & Bookings (Core Logic)
+Backend (Spring Boot):
+•
+•
+•
+
+Hotel entity: id, name, location, description, price_per_night, image_url.
+Booking entity: id, check_in_date, check_out_date, linked to User and Hotel.
+
+Endpoints:
+o
+o
+o
+o
+
+GET /api/hotels → list hotels.
+GET /api/hotels/{id} → hotel details.
+POST /api/bookings (protected) → create booking.
+GET /api/my-bookings (protected) → user’s bookings.
+
+Frontend (React):
+•
+
+Pages:
+
+/ (home) → list hotels (grid of HotelCards).
+/hotels/{id} → hotel detail + booking form.
+/my-bookings → user’s bookings.
+Components: HotelCard, BookingForm.
+o
+o
+o
+
+•
+
+3. Blog (CRUD Showcase)
+Backend (Spring Boot):
+•
+•
+
+Blog entity: id, title, content, created_at, linked to User.
+
+Endpoints:
+o
+o
+o
+o
+
+GET /api/blogs → list posts.
+POST /api/blogs (protected) → create post.
+PUT /api/blogs/{id} (protected) → edit post (author only).
+DELETE /api/blogs/{id} (protected) → delete post (author only).
+
+Frontend (React):
+•
+
+Pages:
+o
+o
+o
+
+/blog → list all blogs.
+/blog/new → create post (protected).
+/blog/edit/{id} → edit post (protected, author only).
+
+📂 Overall Project Structure
+Root Directory
+waystay/
+│── backend/
+# Spring Boot project
+│
+├── src/main/java/com/waystay/
+│
+│
+├── controller/
+# REST Controllers
+│
+│
+├── model/
+# Entities (User, Hotel, Booking, Blog)
+│
+│
+├── repository/
+# Spring Data JPA Repositories
+│
+│
+├── security/
+# JWT, filters, config
+│
+│
+└── service/
+# Business logic
+│
+├── src/main/resources/
+│
+│
+└── application.properties # DB config, JWT secret
+│
+└── pom.xml
+# Maven dependencies
+│
+│── frontend/
+# React project
+│
+├── src/
+│
+│
+├── components/
+# Reusable UI components (HotelCard, etc.)
+│
+│
+├── context/
+# AuthContext for state management
+│
+│
+├── pages/
+# Register, Login, Home, Hotels, Bookings, Blog
+│
+│
+├── services/
+# API calls (authService.js, hotelService.js,
+etc.)
+│
+│
+└── App.jsx
+# Routing + Protected Routes
+│
+├── public/
+│
+└── package.json
+│
+│── README.md
+# Project documentation
+│── .gitignore
+
+🗓️ 10-Week Student Roadmap
+Phase 1: Setup & Auth (Weeks 1–3)
+Week 1:
+•
+•
+•
+
+Create GitHub repo.
+Setup Spring Boot backend + connect to MySQL.
+Setup React frontend with Vite/CRA + Tailwind.
+
+Week 2:
+•
+•
+•
+
+Implement User entity + Spring Security.
+Build /register, /login, /users/me.
+Test with Postman.
+
+Week 3:
+
+•
+•
+•
+
+Frontend login/register forms.
+JWT handling + Auth Context.
+Protected routes + Profile page.
+Milestone: Auth system live.
+
+Phase 2: Hotels & Bookings (Weeks 4–6)
+Week 4:
+•
+•
+
+Implement Hotel entity + endpoints.
+Insert 5–10 fake hotels in DB.
+
+Week 5:
+•
+•
+
+Build HotelCard + Home page.
+Build Hotel Detail page.
+
+Week 6:
+•
+•
+•
+
+Implement Booking entity + endpoints.
+Add booking form to Hotel Detail page.
+Create “My Bookings” page.
+Milestone: End-to-end booking flow.
+
+Phase 3: Blog + Polish + Deployment (Weeks 7–10)
+Week 7:
+•
+•
+
+Build Blog entity + CRUD endpoints.
+Build Blog pages (list, create, edit, delete).
+
+Week 8:
+•
+
+•
+
+Add UI polish:
+o Loading spinners.
+o Error messages.
+o Success toasts.
+Make responsive with Tailwind.
+
+Week 9:
+
+•
+
+Write clean README.md:
+o Overview + screenshots.
+o Tech stack.
+o Setup instructions.
+o Live demo link placeholder.
+
+Week 10:
+•
+•
+•
+
+Deploy backend (Render/Fly.io).
+Deploy frontend (Netlify/Vercel).
+Update README with live links.
+Final Milestone: Working, deployed app.
+
+📌 Extra (Optional if time permits)
+•
+•
+•
+•
+
+Add search/filter for hotels.
+Add pagination on blogs.
+Add image upload (S3/Cloudinary).
+Write unit tests (JUnit for backend, React Testing Library).
+
+

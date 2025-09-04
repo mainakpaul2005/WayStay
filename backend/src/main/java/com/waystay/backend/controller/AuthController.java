@@ -67,6 +67,6 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
-                userDetails.getUsername()));
+                userDetails.getName())); // Now correctly passes the user's name
     }
 }

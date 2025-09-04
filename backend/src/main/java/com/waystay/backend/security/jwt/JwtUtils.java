@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
+import io.jsonwebtoken.io.Decoders; // Added this import
 
 import com.waystay.backend.security.services.UserDetailsImpl;
 
@@ -23,7 +24,7 @@ public class JwtUtils {
     private int jwtExpirationMs;
 
     private SecretKey getSigningKey() {
-        byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
+        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret); // Updated method to use Decoders.BASE64.decode
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
@@ -39,7 +40,7 @@ public class JwtUtils {
     }
 
     public String getEmailFromJwtToken(String token) {
-        return Jwts.parserBuilder()
+        return Jwts.parser()
                 .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
@@ -49,7 +50,7 @@ public class JwtUtils {
 
     public boolean validateJwtToken(String authToken) {
         try {
-            Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(authToken);
+            Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(authToken);
             return true;
         } catch (JwtException e) {
             // log if needed

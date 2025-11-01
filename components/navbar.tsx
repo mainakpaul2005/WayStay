@@ -13,6 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
 
 const components: { title: string; href: string; description: string; icon: React.ComponentType<any> }[] = [
@@ -147,6 +148,7 @@ export function Navbar() {
 
         {/* Auth Buttons */}
         <div className="flex items-center space-x-2 lg:space-x-4">
+          <ThemeToggle />
           <Button variant="ghost" size="sm" asChild className="hidden sm:inline-flex font-medium hover:bg-secondary">
             <Link href="/auth">
               Sign In

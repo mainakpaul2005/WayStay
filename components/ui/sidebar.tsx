@@ -95,6 +95,26 @@ const SidebarProvider = React.forwardRef<
       [setOpenProp, open]
     )
 
+    // Initialize from cookie to persist collapsed/expanded state across reloads
+    React.useEffect(() => {
+      if (openProp !== undefined) return
+      try {
+        const name = `${SIDEBAR_COOKIE_NAME}=`
+        const parts = document.cookie.split(";")
+        for (let p of parts) {
+          p = p.trim()
+          if (p.startsWith(name)) {
+            const v = p.substring(name.length)
+            if (v === "true" || v === "false") {
+              _setOpen(v === "true")
+            }
+            break
+          }
+        }
+      } catch {}
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     // Helper to toggle the sidebar.
     const toggleSidebar = React.useCallback(() => {
       return isMobile

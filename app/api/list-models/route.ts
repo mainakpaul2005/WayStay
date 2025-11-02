@@ -6,7 +6,7 @@ export async function GET() {
     const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
     const genAI = new GoogleGenerativeAI(apiKey);
     
-    console.log('Listing available models...');
+  if (process.env.NODE_ENV !== 'production') console.log('Listing available models...');
     
     // Test multiple model names to see which ones work
     const modelsToTest = [

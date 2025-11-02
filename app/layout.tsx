@@ -47,7 +47,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <ThemeToggle />
                 </div>
               </header>
-              <main className="min-h-[calc(100vh-3.5rem)] bg-background">
+              {/* Added will-change to optimize for route transitions and prevent layout thrashing */}
+              <main className="min-h-[calc(100vh-3.5rem)] bg-background will-change-contents">
                 {children}
               </main>
             </SidebarInset>

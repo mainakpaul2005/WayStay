@@ -86,13 +86,13 @@ export function AITripPlanner({ onPlanGenerated }: TripPlannerProps) {
       return;
     }
 
-    setLoading(true);
-    setError('');
-    console.log('Starting trip plan generation with data:', formData);
+  setLoading(true);
+  setError('');
+  if (process.env.NODE_ENV !== 'production') console.log('Starting trip plan generation with data:', formData);
 
     try {
       const plan = await tripPlanner.generateItinerary(formData);
-      console.log('Trip plan generated successfully:', plan);
+  if (process.env.NODE_ENV !== 'production') console.log('Trip plan generated successfully:', plan);
       setGeneratedPlan(plan);
       if (onPlanGenerated) {
         onPlanGenerated(plan);

@@ -193,7 +193,7 @@ export function Dashboard() {
                 variant="outline" 
                 className="w-full justify-start h-10 px-4 py-2 text-base font-medium hover:bg-primary/5 hover:border-primary/50 transition-all duration-200"
                 onClick={() => {
-                  console.log('Edit profile clicked');
+                  if (process.env.NODE_ENV !== 'production') console.log('Edit profile clicked');
                 }}
               >
                 <User className="mr-3 h-5 w-5 text-primary" />
@@ -203,7 +203,7 @@ export function Dashboard() {
                 variant="outline" 
                 className="w-full justify-start h-10 px-4 py-2 text-base font-medium hover:bg-primary/5 hover:border-primary/50 transition-all duration-200"
                 onClick={() => {
-                  console.log('Change password clicked');
+                  if (process.env.NODE_ENV !== 'production') console.log('Change password clicked');
                 }}
               >
                 <Lock className="mr-3 h-5 w-5 text-primary" />
@@ -213,7 +213,7 @@ export function Dashboard() {
                 variant="outline" 
                 className="w-full justify-start h-10 px-4 py-2 text-base font-medium hover:bg-primary/5 hover:border-primary/50 transition-all duration-200"
                 onClick={() => {
-                  console.log('Settings clicked');
+                  if (process.env.NODE_ENV !== 'production') console.log('Settings clicked');
                 }}
               >
                 <Settings className="mr-3 h-5 w-5 text-primary" />

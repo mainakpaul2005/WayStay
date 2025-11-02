@@ -4,76 +4,108 @@
 
 @layer base {
   :root {
-    /* Brand: Teal Base #008B8B; Light/Dark palettes mapped to tokens */
-    /* Light mode (defaults) */
-    --background: 180 11% 96%;           /* #F5F7F7 */
-    --foreground: 0 0% 12%;              /* #1E1E1E Primary text */
-    --card: 0 0% 100%;                   /* #FFFFFF */
-    --card-foreground: 0 0% 12%;         /* match primary text */
+    /* Premium light theme with teal, coral, and warm palette */
+    --background: 0 0% 98%;              /* #F9F9F9 - Soft warm white */
+    --foreground: 198 25% 16%;           /* #1B2B34 - Deep ocean text */
+    --card: 0 0% 100%;                   /* #FFFFFF - Pure white cards */
+    --card-foreground: 198 25% 16%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
-    --primary: 180 100% 31%;             /* #00A0A0 action/highlight */
-    --primary-foreground: 0 0% 100%;     /* on teal */
-    --secondary: 180 100% 27%;           /* #008B8B brand base */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 180 11% 96%;                /* subtle background */
-    --muted-foreground: 0 0% 33%;        /* #555555 Secondary text */
-    --accent: 180 100% 27%;              /* brand base as accent */
+    --popover-foreground: 198 25% 16%;
+    
+    /* Vibrant primary with ocean teal */
+    --primary: 183 100% 26%;             /* #007C82 - Deep teal */
+    --primary-foreground: 0 0% 100%;
+    
+    /* Sophisticated secondary palette */
+    --secondary: 45 85% 70%;             /* #F2C572 - Warm golden */
+    --secondary-foreground: 198 25% 16%;
+    
+    /* Refined muted tones */
+    --muted: 40 15% 94%;                 /* #F5F3F0 - Neutral warm light */
+    --muted-foreground: 198 15% 45%;     /* #677882 - Balanced secondary text */
+    
+    /* Eye-catching accent with coral energy */
+    --accent: 10 100% 66%;               /* #FF7755 - Vibrant coral */
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 88%;                  /* #E0E0E0 */
-    --input: 0 0% 88%;
-    --ring: 180 100% 31%;                /* match primary */
-    --chart-1: 180 100% 31%;             /* primary */
-    --chart-2: 175 69% 48%;              /* dark accent #26D1C3 */
-    --chart-3: 180 100% 27%;             /* brand base */
-    --chart-4: 0 0% 88%;                 /* border */
-    --chart-5: 180 11% 96%;              /* background */
+    
+    /* Destructive with proper urgency */
+    --destructive: 0 72% 51%;            /* #DC2626 - Clear red */
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Subtle borders and inputs */
+    --border: 198 10% 88%;               /* #DDE2E5 - Clean ocean-tinted borders */
+    --input: 198 10% 88%;
+    --ring: 183 100% 26%;                /* Match primary teal */
+    
+    /* Harmonious chart colors */
+    --chart-1: 183 100% 26%;             /* Primary teal */
+    --chart-2: 10 100% 66%;              /* Accent coral */
+    --chart-3: 45 85% 70%;               /* Golden yellow */
+    --chart-4: 190 85% 35%;              /* Ocean blue */
+    --chart-5: 25 95% 65%;               /* Sunset orange */
     --radius: 0.75rem;
-    --sidebar-background: 180 11% 96%;
-    --sidebar-foreground: 0 0% 33%;
-    --sidebar-primary: 180 100% 31%;
+    
+    /* Elevated sidebar with clear separation */
+    --sidebar-background: 0 0% 100%;     /* Pure white sidebar */
+    --sidebar-foreground: 198 25% 18%;   /* Strong text contrast */
+    --sidebar-primary: 183 100% 26%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 180 100% 27%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 180 100% 31%;
+    --sidebar-accent: 183 35% 96%;       /* Soft teal tint for hover */
+    --sidebar-accent-foreground: 198 25% 16%;
+    --sidebar-border: 198 10% 92%;       /* Subtle division */
+    --sidebar-ring: 183 100% 26%;
   }
 
   .dark {
-    --background: 198 20% 8%;            /* #0F1416 */
-    --foreground: 0 0% 91%;              /* #E8E8E8 */
-    --card: 195 17% 13%;                 /* #1B2426 */
-    --card-foreground: 0 0% 91%;
-    --popover: 195 17% 13%;
-    --popover-foreground: 0 0% 91%;
-    --primary: 175 69% 48%;              /* #26D1C3 luminous */
-    --primary-foreground: 198 20% 8%;    /* dark text on luminous */
-    --secondary: 180 100% 27%;           /* #008B8B brand base */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 195 17% 16%;                /* subtle elevated */
-    --muted-foreground: 0 0% 63%;        /* #A0A0A0 secondary text */
-    --accent: 175 69% 48%;               /* luminous teal for highlights */
-    --accent-foreground: 198 20% 8%;
-    --destructive: 0 60% 50%;
+    /* Premium dark theme with very dark teal base */
+    --background: 185 35% 8%;            /* #0D1517 - Very dark teal/cyan black */
+    --foreground: 0 0% 98%;              /* #F9F9F9 - Crisp warm white */
+    --card: 185 30% 12%;                 /* #151F23 - Elevated dark teal surface */
+    --card-foreground: 0 0% 98%;
+    --popover: 185 30% 12%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Luminous primary with glowing teal */
+    --primary: 183 95% 45%;              /* #0AC4CC - Bright glowing teal */
+    --primary-foreground: 185 35% 8%;    /* Dark text on bright */
+    
+    /* Elevated secondary surfaces */
+    --secondary: 185 25% 16%;            /* #1D2A2F - Rich dark teal elevation */
+    --secondary-foreground: 0 0% 98%;
+    
+    /* Sophisticated muted palette */
+    --muted: 185 22% 18%;                /* #243235 - Deep teal slate */
+    --muted-foreground: 185 15% 70%;     /* #A8B8BE - Clearer secondary text */
+    
+    /* Vibrant accent that pops */
+    --accent: 10 100% 68%;               /* #FF8566 - Bright coral */
+    --accent-foreground: 185 35% 8%;
+    
+    /* Warm golden secondary */
+    --destructive: 0 85% 65%;            /* #FB8383 - Bright red */
     --destructive-foreground: 0 0% 98%;
-    --border: 189 13% 21%;               /* #2E3A3C */
-    --input: 189 13% 21%;
-    --ring: 175 69% 48%;
-    --chart-1: 175 69% 48%;
-    --chart-2: 0 0% 91%;
-    --chart-3: 180 100% 27%;
-    --chart-4: 195 17% 30%;
-    --chart-5: 195 17% 20%;
-    --sidebar-background: 198 20% 8%;
-    --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 175 69% 48%;
-    --sidebar-primary-foreground: 198 20% 8%;
-    --sidebar-accent: 180 100% 27%;
-    --sidebar-accent-foreground: 198 20% 8%;
-    --sidebar-border: 189 13% 21%;
-    --sidebar-ring: 175 69% 48%;
+    
+    /* Defined borders for clarity */
+    --border: 185 18% 24%;               /* #313F44 - More visible teal divisions */
+    --input: 185 18% 24%;
+    --ring: 183 95% 45%;                 /* Match primary glow */
+    
+    /* Vibrant chart palette for dark mode */
+    --chart-1: 183 95% 45%;              /* Primary teal */
+    --chart-2: 10 100% 68%;              /* Accent coral */
+    --chart-3: 45 90% 65%;               /* Golden yellow */
+    --chart-4: 190 85% 48%;              /* Ocean blue */
+    --chart-5: 25 95% 62%;               /* Sunset orange */
+    
+    /* Rich sidebar with atmospheric teal depth */
+    --sidebar-background: 185 32% 10%;   /* #121B1E - Very dark teal with better contrast */
+    --sidebar-foreground: 0 0% 96%;      /* #F5F5F5 - Brighter readable text */
+    --sidebar-primary: 183 95% 45%;
+    --sidebar-primary-foreground: 185 35% 8%;
+    --sidebar-accent: 185 20% 20%;       /* More visible teal glow on hover */
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 185 18% 22%;       /* More visible but still subtle */
+    --sidebar-ring: 183 95% 45%;
   }
 }
 
@@ -84,39 +116,54 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     background-attachment: fixed;
+    /* Subtle gradient for depth */
+    background-image: radial-gradient(circle at 50% 0%, hsl(var(--muted) / 0.3) 0%, transparent 50%);
   }
 
-  /* Typography Improvements */
+  /* Enhanced Typography with better hierarchy */
   h1 {
     @apply font-display font-bold tracking-tight;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
   h2 {
     @apply font-display font-semibold tracking-tight;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   h3 {
     @apply font-semibold tracking-tight;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
   }
 
   h4, h5, h6 {
     @apply font-semibold;
+    line-height: 1.4;
   }
 
   p {
     @apply leading-relaxed;
+    line-height: 1.65;
   }
 
   a {
-    @apply transition-colors duration-200;
+    @apply transition-all duration-200;
+  }
+  
+  /* Better focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background rounded-md;
   }
 }
 
@@ -128,29 +175,47 @@ html, body, #root {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Custom scrollbar */
+/* Refined Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
+  background: hsl(var(--background));
+  border-left: 1px solid hsl(var(--border));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
-  border-radius: 4px;
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 6px;
+  border: 2px solid hsl(var(--background));
   transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--primary) / 0.5);
 }
 
-/* Smooth transitions */
+::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--primary) / 0.7);
+}
+
+/* Smooth transitions with performance optimization */
 * {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Focus styles */
@@ -166,29 +231,46 @@ html, body, #root {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Modern gradients */
+/* Modern gradients with vibrant accents */
 .gradient-bg {
   background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
 }
 
 .hero-gradient {
-  /* Lightened hero background for better airiness */
+  /* Dynamic gradient with accent colors */
   background: linear-gradient(
     135deg,
     hsl(var(--background)) 0%,
-    hsl(var(--accent) / 0.12) 35%,
+    hsl(var(--primary) / 0.08) 25%,
+    hsl(var(--accent) / 0.12) 50%,
     hsl(var(--card)) 100%
   );
 }
 
-/* Slightly brighter gradient in dark mode for improved lift */
+/* Rich gradient in dark mode with luminous accents */
 .dark .hero-gradient {
   background: linear-gradient(
     135deg,
     hsl(var(--background)) 0%,
-    hsl(var(--accent) / 0.18) 40%,
+    hsl(var(--primary) / 0.15) 30%,
+    hsl(var(--accent) / 0.20) 60%,
     hsl(var(--muted)) 100%
   );
+}
+
+/* Accent gradient utility */
+.accent-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+}
+
+/* Subtle accent glow for interactive elements */
+.accent-glow {
+  box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.accent-glow:hover {
+  box-shadow: 0 0 30px hsl(var(--accent) / 0.5);
 }
 
 /* Enhanced card styles */
@@ -200,10 +282,17 @@ html, body, #root {
   @apply rounded-lg border border-border/30 bg-card/50 backdrop-blur-sm;
 }
 
-/* Button enhancements */
+/* Enhanced button styles with vibrant accents */
 .btn-primary {
   @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200;
   @apply bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95;
+  @apply shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30;
+}
+
+.btn-accent {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  @apply bg-accent text-accent-foreground hover:bg-accent/90 active:scale-95;
+  @apply shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/30;
 }
 
 .btn-secondary {
@@ -211,16 +300,36 @@ html, body, #root {
   @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border;
 }
 
-/* Badge improvements */
+/* Vibrant badge styles */
 .badge-primary {
   @apply inline-flex items-center justify-center px-3 py-1 rounded-full font-medium text-xs;
-  @apply bg-primary/10 text-primary border border-primary/20;
+  @apply bg-primary/15 text-primary border border-primary/30;
 }
 
-/* Text utilities for better typography */
+.badge-accent {
+  @apply inline-flex items-center justify-center px-3 py-1 rounded-full font-medium text-xs;
+  @apply bg-accent/15 text-accent border border-accent/30;
+}
+
+.badge-glow {
+  @apply inline-flex items-center justify-center px-3 py-1 rounded-full font-semibold text-xs;
+  @apply bg-gradient-to-r from-primary to-accent text-white;
+  @apply shadow-md shadow-primary/30;
+}
+
+/* Text utilities with vibrant gradients */
 .text-gradient {
-  /* Brand teal gradient */
-  background: linear-gradient(135deg, #26D1C3 0%, #00A0A0 100%);
+  /* Dynamic primary to accent gradient */
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-reverse {
+  /* Reverse gradient for variety */
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
   -moz-background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -298,4 +407,69 @@ img {
 
 .animate-slide-in-right {
   animation: slideInRight 0.5s ease-out;
+}
+
+/* Glassmorphism utilities for sleek UI */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--border));
+}
+
+/* Sleek shadow utilities */
+.shadow-glow-primary {
+  box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.3);
+}
+
+.shadow-glow-accent {
+  box-shadow: 0 0 20px -5px hsl(var(--accent) / 0.3);
+}
+
+.shadow-elevated {
+  box-shadow: 
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1),
+    0 0 0 1px hsl(var(--border));
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Override for elements that shouldn't transition */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
+
+/* Better focus states for accessibility and sleekness */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+/* Smooth page transitions */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

@@ -76,7 +76,7 @@ export class TripPlannerService {
     `;
 
     try {
-      console.log('Generating itinerary for:', params);
+  if (process.env.NODE_ENV !== 'production') console.log('Generating itinerary for:', params);
       const result = await this.model.generateContent(prompt);
       const response = result.response;
       let text = response.text().trim();
@@ -91,13 +91,15 @@ export class TripPlannerService {
         text = text.substring(firstBrace, lastBrace + 1);
       }
       
-      console.log('Raw AI response length:', text.length);
-      console.log('Cleaned AI response preview:', text.substring(0, 300));
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Raw AI response length:', text.length);
+        console.log('Cleaned AI response preview:', text.substring(0, 300));
+      }
       
       // Try to parse as JSON, fallback to structured text if parsing fails
       try {
         const parsed = JSON.parse(text);
-        console.log('Successfully parsed JSON response');
+  if (process.env.NODE_ENV !== 'production') console.log('Successfully parsed JSON response');
         
         // Validate that we have the essential fields
         if (!parsed.summary || !parsed.dailyItinerary || !Array.isArray(parsed.dailyItinerary)) {
@@ -107,7 +109,7 @@ export class TripPlannerService {
         
         return parsed;
       } catch (parseError) {
-        console.warn('Failed to parse JSON, creating fallback response:', parseError);
+        if (process.env.NODE_ENV !== 'production') console.warn('Failed to parse JSON, creating fallback response:', parseError);
         
         // Create a fallback structured response
         return {
@@ -146,11 +148,13 @@ export class TripPlannerService {
         };
       }
     } catch (error) {
-      console.error('Error generating itinerary:', error);
-      console.error('Error details:', {
-        message: error instanceof Error ? error.message : 'Unknown error',
-        stack: error instanceof Error ? error.stack : undefined
-      });
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error generating itinerary:', error);
+        console.error('Error details:', {
+          message: error instanceof Error ? error.message : 'Unknown error',
+          stack: error instanceof Error ? error.stack : undefined
+        });
+      }
       
       // Provide more specific error information
       if (error instanceof Error) {

@@ -74,7 +74,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await signOut(auth);
   };
 
-  const value = {
+  // Memoize the context value to prevent unnecessary re-renders of all consumers
+  // when the provider re-renders but user/loading state hasn't changed.
+  // This significantly speeds up navigation as it reduces component re-renders.
+  const value = React.useMemo(() => ({
     user,
     loading,
     signIn,
@@ -83,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signInWithPhone,
     confirmPhoneSignIn,
     logout,
-  };
+  }), [user, loading]);
 
   return (
     <AuthContext.Provider value={value}>

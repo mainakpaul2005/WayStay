@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    console.log('Testing Gemini API with different model names...');
+  if (process.env.NODE_ENV !== 'production') console.log('Testing Gemini API with different model names...');
     const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
     const genAI = new GoogleGenerativeAI(apiKey);
     
@@ -18,14 +18,14 @@ export async function GET() {
     
     for (const modelName of modelsToTest) {
       try {
-        console.log(`Testing model: ${modelName}`);
+  if (process.env.NODE_ENV !== 'production') console.log(`Testing model: ${modelName}`);
         const model = genAI.getGenerativeModel({ model: modelName });
         
         const result = await model.generateContent('Say "Hello World" in JSON format');
         const response = await result.response;
         const text = response.text();
         
-        console.log(`SUCCESS with model ${modelName}:`, text);
+  if (process.env.NODE_ENV !== 'production') console.log(`SUCCESS with model ${modelName}:`, text);
         
         return NextResponse.json({ 
           success: true, 
@@ -34,7 +34,7 @@ export async function GET() {
           message: `Successfully connected with ${modelName}!` 
         });
       } catch (error: any) {
-        console.log(`FAILED with model ${modelName}:`, error.message);
+        if (process.env.NODE_ENV !== 'production') console.log(`FAILED with model ${modelName}:`, error.message);
         continue;
       }
     }

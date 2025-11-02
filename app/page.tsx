@@ -471,10 +471,19 @@ export default function HomePage() {
             {trendingDestinations.map((destination) => (
               <Card key={destination.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer">
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  {/*
+                    Optimization: use next/image for remote images to enable
+                    automatic optimization, responsive srcsets, and lazy-loading.
+                    Using `fill` keeps layout stable (prevents layout shift) and
+                    `sizes` hints reduce bandwidth on small viewports.
+                  */}
+                  <Image
                     src={destination.image}
                     alt={destination.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
                   />
                   {destination.trending && (
                     <Badge className="absolute top-3 left-3 bg-red-500 hover:bg-red-600">
@@ -599,10 +608,18 @@ export default function HomePage() {
             {experiences.map((experience, index) => (
               <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer">
                 <div className="relative h-40 overflow-hidden">
-                  <img
+                  {/*
+                    Optimization: convert decorative/remote images to next/image
+                    with `fill` for layout stability and lazy loading to reduce
+                    initial page JS and improve CLS.
+                  */}
+                  <Image
                     src={experience.image}
                     alt={experience.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-3 left-3 text-white">

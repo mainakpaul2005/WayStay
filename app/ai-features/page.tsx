@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -24,13 +25,12 @@ import {
   ArrowRight,
   CheckCircle
 } from 'lucide-react';
-import { 
-  AITripPlanner,
-  AIConcierge,
-  AIPricePrediction,
-  AIBudgetPlanner,
-  AITranslationService
-} from '@/components/features';
+// Dynamically load heavier AI feature components to reduce initial JS bundle
+const AITripPlanner = dynamic(() => import('@/components/features/AITripPlanner').then(mod => mod.AITripPlanner))
+const AIConcierge = dynamic(() => import('@/components/features/AIConcierge').then(mod => mod.AIConcierge))
+const AIPricePrediction = dynamic(() => import('@/components/features/AIPricePrediction').then(mod => mod.AIPricePrediction))
+const AIBudgetPlanner = dynamic(() => import('@/components/features/AIBudgetPlanner').then(mod => mod.AIBudgetPlanner))
+const AITranslationService = dynamic(() => import('@/components/features/AITranslationService').then(mod => mod.AITranslationService))
 
 const aiFeatures = [
   {
@@ -86,82 +86,78 @@ export default function AIFeaturesShowcase() {
   const ActiveComponent = aiFeatures.find(f => f.id === activeFeature)?.component;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-gray-900 to-black text-white">
-        <div className="container mx-auto px-4 py-16">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="flex items-center justify-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
-                <Sparkles className="h-8 w-8 text-white" />
+    <div className="min-h-screen bg-background">
+      <div className="border-b">
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                <Sparkles className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold">
-                AI-Powered Travel Features
+              <h1 className="text-3xl md:text-4xl font-bold">
+                AI Features
               </h1>
             </div>
-            <p className="text-xl text-gray-300 mb-8">
-              Experience the future of travel with WayStay&apos;s intelligent AI features designed to make your journey seamless, affordable, and unforgettable.
+            <p className="text-lg text-muted-foreground mb-6">
+              Smart tools powered by AI to help plan your trips, find deals, and get instant help.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Badge className="px-4 py-2 bg-blue-600 text-white">
-                <Zap className="h-4 w-4 mr-1" />
-                Powered by Gemini AI
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="secondary">
+                <Zap className="h-3 w-3 mr-1" />
+                Gemini AI
               </Badge>
-              <Badge className="px-4 py-2 bg-green-600 text-white">
-                <Globe className="h-4 w-4 mr-1" />
-                Available Worldwide
+              <Badge variant="secondary">
+                <Globe className="h-3 w-3 mr-1" />
+                Works Worldwide
               </Badge>
-              <Badge className="px-4 py-2 bg-purple-600 text-white">
-                <Shield className="h-4 w-4 mr-1" />
-                Enterprise Grade
-              </Badge>
+              <Badge variant="secondary">Beta</Badge>
             </div>
           </div>
         </div>
       </div>
 
       {/* Features Overview */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Choose an AI Feature to Explore</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Each feature is powered by advanced AI to provide you with intelligent, personalized travel assistance.
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold mb-2">Pick a feature</h2>
+          <p className="text-muted-foreground">
+            Try out our AI tools to help with your travel planning.
           </p>
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           {aiFeatures.map((feature) => {
             const IconComponent = feature.icon;
             return (
               <Card 
                 key={feature.id}
-                className={`cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-                  activeFeature === feature.id ? 'ring-2 ring-blue-500 shadow-lg' : ''
+                className={`cursor-pointer hover:border-primary/50 transition-all ${
+                  activeFeature === feature.id ? 'border-primary bg-primary/5' : ''
                 }`}
                 onClick={() => setActiveFeature(feature.id)}
               >
                 <CardHeader>
-                  <div className={`w-12 h-12 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center mb-4`}>
-                    <IconComponent className="h-6 w-6 text-white" />
+                  <div className={`w-10 h-10 bg-gradient-to-br ${feature.color} rounded-lg flex items-center justify-center mb-3`}>
+                    <IconComponent className="h-5 w-5 text-white" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 mb-4">
+                  <ul className="space-y-1.5 mb-3">
                     {feature.features.map((feat, index) => (
-                      <div key={index} className="flex items-center text-sm">
-                        <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                      <li key={index} className="flex items-start text-sm text-muted-foreground">
+                        <CheckCircle className="h-3.5 w-3.5 text-primary mr-2 mt-0.5 flex-shrink-0" />
                         <span>{feat}</span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                   <Button 
                     variant={activeFeature === feature.id ? "default" : "outline"}
+                    size="sm"
                     className="w-full"
                   >
-                    {activeFeature === feature.id ? 'Currently Active' : 'Try This Feature'}
+                    {activeFeature === feature.id ? 'Active' : 'Try it'}
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </CardContent>
@@ -171,43 +167,43 @@ export default function AIFeaturesShowcase() {
         </div>
 
         {/* Active Feature Component */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl shadow-2xl shadow-primary/5 p-8">
           {ActiveComponent && <ActiveComponent />}
         </div>
 
         {/* AI Capabilities Info */}
         <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <Card className="text-center">
+          <Card className="text-center bg-card/50 backdrop-blur-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
             <CardHeader>
-              <Target className="h-12 w-12 text-blue-500 mx-auto mb-4" />
+              <Target className="h-12 w-12 text-primary mx-auto mb-4" />
               <CardTitle>Intelligent Personalization</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Our AI learns from your preferences and travel history to provide increasingly personalized recommendations and insights.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="text-center bg-card/50 backdrop-blur-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 hover:-translate-y-1">
             <CardHeader>
-              <TrendingUp className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <TrendingUp className="h-12 w-12 text-accent mx-auto mb-4" />
               <CardTitle>Real-time Data Analysis</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Access live market data, pricing trends, and availability information to make informed travel decisions instantly.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="text-center bg-card/50 backdrop-blur-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
             <CardHeader>
-              <Clock className="h-12 w-12 text-purple-500 mx-auto mb-4" />
+              <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
               <CardTitle>24/7 Availability</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Get instant assistance anytime, anywhere. Our AI never sleeps and is always ready to help with your travel needs.
               </p>
             </CardContent>
@@ -216,18 +212,18 @@ export default function AIFeaturesShowcase() {
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-0">
+          <Card className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border-primary/20 backdrop-blur-sm">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Ready to Experience AI-Powered Travel?</h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Ready to Experience AI-Powered Travel?</h3>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 Join thousands of travelers who are already using WayStay&apos;s AI features to plan better trips, save money, and create unforgettable memories.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button size="lg" className="px-8">
+                <Button size="lg" className="px-8 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 hover:scale-105 transition-all">
                   <Star className="h-5 w-5 mr-2" />
                   Start Planning Your Trip
                 </Button>
-                <Button variant="outline" size="lg" className="px-8">
+                <Button variant="outline" size="lg" className="px-8 border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all">
                   <Lightbulb className="h-5 w-5 mr-2" />
                   Learn More About AI
                 </Button>
